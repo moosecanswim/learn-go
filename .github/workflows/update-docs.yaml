@@ -12,11 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Install JQ
+      - name: Is jq installed
         run: |
-          echo "deb http://us.archive.ubuntu.com/ubuntu vivid main universe" >> /etc/apt/sources.list
-          sudo apt-get update
-          sudo apt-get install jq
+          jq --version
 
       - name: Pull in File to update
         run: |
