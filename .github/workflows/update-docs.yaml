@@ -19,15 +19,15 @@ jobs:
       - name: Pull in File to update
         run: |
           # setup git details
+          export GITHUB_USER=moosecanswim
           git config --global user.email "62956126+vwadbot@users.noreply.github.com"
           git config --global user.name $GITHUB_USER
-
-          # clone repo
-          # git clone https://:${{secrets.GITHUB_TOKEN}}@github.commoosecanswim/test-config-change-automation target
-          git clone -o upstream https://github.com/moosecanswim/test-config-change-automation.git
-          
           echo $BRANCH_STAMP
 
+          git clone -o upstream https://github.com/moosecanswim/test-config-change-automation.git
+          
+          cd test-config-change-automation
+          
           ls -al
           
           # cd target
