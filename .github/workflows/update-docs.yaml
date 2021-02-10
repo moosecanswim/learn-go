@@ -1,0 +1,40 @@
+
+name: Create PR to update helm versions
+
+on:
+  push:
+    branches:
+      - actions
+
+jobs:
+  create_pr:
+    name: Create PR to update book.json with new values
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Install JQ
+        run: |
+          echo "deb http://us.archive.ubuntu.com/ubuntu vivid main universe" >> /etc/apt/sources.list
+          sudo apt-get update
+          sudo apt-get install jq
+
+      - name: Pull in File to update
+        run: |
+          #setup git details
+          git config --global user.email "62956126+vwadbot@users.noreply.github.com"
+          git config --global user.name $GITHUB_USER
+
+          # clone repo
+          # git clone https://:${{secrets.GITHUB_TOKEN}}@github.commoosecanswim/test-config-change-automation target
+          git clone -o upstream https://github.com/moosecanswim/test-config-change-automation.git
+          
+          echo $BRANCH_STAMP
+
+          ls -al
+          
+          # cd target
+          # # do a sed to update shit in target
+          # git checkout -b increment-charts
+          # git add target
+          # git commit -m "Automatic publish from learn-go"
+          # git push --set-upstream origin increment-charts
